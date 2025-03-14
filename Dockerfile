@@ -10,22 +10,13 @@
 # PULL
 # WORKDIR
 
-FROM maven:3.9-eclipse-temurin-17 AS builder
+FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY pom.xml .
-COPY src ./src
+# Copy the pre-built jar file (you'll need to build this first)
+<Please fill in the required Docker command>  guestbook-0.0.1-SNAPSHOT.jar app.jar
 
-RUN mvn clean package -DskipTests
+<Please fill in the required Docker command>  3000
 
-FROM eclipse-temurin:17-jre-jammy
-
-WORKDIR /app
-
-
-<Please fill in the required Docker command> --from=builder /app/target/guestbook-0.0.1-SNAPSHOT.jar /app/guestbook.jar
-
-<Please fill in the required Docker command> 3000
-
-CMD ["java", "-jar", "guestbook.jar"]
+CMD ["java", "-jar", "app.jar"]
