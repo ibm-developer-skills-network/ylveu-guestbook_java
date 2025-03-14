@@ -20,7 +20,7 @@ spec:
         app: guestbook
     spec:
       containers:
-      - image: us.icr.io/${YOUR_NAMESPACE}/guestbook:v1
+      - image: us.icr.io/${YOUR_NAMESPACE}/guestbook
         imagePullPolicy: Always
         name: guestbook
         ports:
