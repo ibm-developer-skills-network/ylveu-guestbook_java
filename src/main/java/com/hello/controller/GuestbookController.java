@@ -35,11 +35,13 @@ public class GuestbookController {
         return redisTemplate.opsForList().range(key, 0, -1);
     }
     
-    @GetMapping("/info")
+     @GetMapping("/info")
     public String getInfo() {
         try {
-            if (redisTemplate.getConnectionFactory() != null && 
-                redisTemplate.getConnectionFactory().getConnection() != null) {
+            System.out.println("harsh");
+            var connectionFactory = redisTemplate.getConnectionFactory();
+            if (connectionFactory != null && 
+                connectionFactory.getConnection() != null) {
                 return "Redis connection active";
             }
         } catch (Exception e) {
